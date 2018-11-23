@@ -1,0 +1,23 @@
+<div id="header">
+  <div id="header-logo">
+    <img id="landing-logo" src="../../assets/logo.PNG" alt="Scorp">
+  </div>
+  <div id="header-search-bar">
+    <input id="search-bar" type="text" placeholder="Search">
+  </div>
+  <div class="go-button">
+    <button class="btn btn-primary" id="search-button">Go!</button>
+  </div>
+</div>
+<div id="header-line"></div>
+<div class="main-content">
+  <div *ngFor="let result of results" class="result">
+    <div class="link">
+      <a href="#">{{result}}</a><span><img class="cache-icon" src="../../assets/floppy-disk.png" alt="Cache link"></span>
+    </div>
+    <div class="description">
+      <p>BlablaasflkasfsdafkdsajflsdfgsdgsBlablaasflkasfsdafkdsajflsdfgsdgsBlablaasflkasfsdafkdsajflsdfgsdgs
+        BlablaasflkasfsdafkdsajflsdfgsdgsBlablaasflkasfsdafkdsajflsdfgsdgsBlablaasflkasfsdafkdsajflsdfgsdgs</p>
+    </div>
+  </div>
+</div>
