@@ -3,24 +3,27 @@
     <img id="landing-logo" src="../../assets/logo.PNG" alt="Scorp">
   </div>
   <div id="header-search-bar">
-    <input id="search-bar" type="text" placeholder="Search" #searchInput>
+    <input id="search-bar" type="text" placeholder="Buscar" #searchInput>
   </div>
   <div class="go-button">
-    <button class="btn btn-primary" id="search-button" (click)="onSearch(searchInput.value)">Go!</button>
+    <button class="btn btn-primary" id="search-button" (click)="onSearch(searchInput.value)">Ir!</button>
   </div>
 </div>
 <div id="header-line"></div>
 <div *ngIf="resultsLoaded; else loading" class="main-content">
   <div *ngFor="let result of showedResults" class="result">
     <div class="link-line">
-      <div class="link"><a href="#">{{result}}</a></div>
+      <div class="link"><a href="{{result.url}}">{{result.alias}}</a></div>
       <div class="cache">
-        <img class="cache-icon" src="../../assets/floppy-disk.png" alt="Cache link">
+        <a href="{{result.cacheURL}}"><img class="cache-icon" src="../../assets/floppy-disk.png" alt="Cache link"></a>
       </div>
     </div>
     <div class="description">
-      <p>Fragmento de un escrito con unidad temática, que queda diferenciado del resto de fragmentos por un punto y aparte y generalmente también por llevar letra mayúscula inicial y un espacio en blanco en el margen izquierdo de alineación del texto principal de la primera línea.</p>
+      <p>{{result.url}}</p>
     </div>
+  </div>
+  <div *ngIf="showedResults.length == 0" class="mb-4">
+    <h3>No se encontraron resultados.</h3>
   </div>
   <ngb-pagination [collectionSize]="results.length" [(page)]="currentPage" [maxSize]="5"
                   [pageSize]="pageSize" [rotate]="true"

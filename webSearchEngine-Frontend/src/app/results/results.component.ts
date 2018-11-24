@@ -2,6 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {QueryProcessorService} from '../services/query-processor.service';
 
+class Result {
+  alias: string;
+  url: string;
+  cacheURL: string;
+}
+
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
@@ -9,8 +15,10 @@ import {QueryProcessorService} from '../services/query-processor.service';
 })
 export class ResultsComponent implements OnInit {
 
-  showedResults = [];
-  results = ['1abababababababababaa1abababababababababaa1abababababababababaa1abababababababababaa1abababababababababaa', 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  static readonly CACHE_RESULT_PATH = 'http://localhost/Coleccion/';
+
+  showedResults: Result[] = [];
+  results: Result[] = [];
 
   pageSize = 5;
   currentPage = 0;
@@ -33,7 +41,8 @@ export class ResultsComponent implements OnInit {
 
   processQueryRequest(query: string) {
     this.queryProcessorService.processQueryRequest(query).then(response => {
-      console.log(response);
+      const results = JSON.parse(JSON.stringify(response));
+      this.processResults(results.queryResults);
       this.resultsLoaded = true;
     });
   }
@@ -42,6 +51,17 @@ export class ResultsComponent implements OnInit {
     this.router.navigate(['/results'], {  queryParams: {query: value}});
     this.resultsLoaded = false;
     this.processQueryRequest(value);
+    location.reload();
+  }
+
+  processResults(results: any[]) {
+    results.forEach(result => {
+      const newResult = new Result();
+      newResult.alias = result.key;
+      newResult.url = result.value;
+      newResult.cacheURL = ResultsComponent.CACHE_RESULT_PATH + result.key + '.html';
+      this.results.push(newResult);
+    });
   }
 
 }
