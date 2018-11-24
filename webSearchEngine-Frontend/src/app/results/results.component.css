@@ -15,6 +15,7 @@
 
 #landing-logo{
   width: 100%;
+  cursor: pointer;
 }
 
 #header-search-bar{
@@ -29,6 +30,14 @@
   border-radius: 50%;
 }
 
+#loading {
+  font-size: 24px;
+  color: orange;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
+}
 /*-------------------- TAGS --------------------*/
 input {
   border-radius: 10px;
@@ -51,14 +60,25 @@ p{
 .main-content {
   padding: 50px 0px 0px 80px;
   min-width: 320px;
+  width: 60%;
 }
 
 .result{
   margin-bottom: 30px;
+  overflow: hidden;
 }
 
-.link{
-  min-height: 30px;
+.link {
+  display: inline-block;
+  width: fit-content;
+  max-width: 92%;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.cache {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .cache-icon{
@@ -91,5 +111,9 @@ p{
 
   #header-logo{
     width: 25%;
+  }
+
+  .main-content{
+    width: 100%;
   }
 }

@@ -1,23 +1,35 @@
 <div id="header">
-  <div id="header-logo">
+  <div id="header-logo" routerLink="/landing">
     <img id="landing-logo" src="../../assets/logo.PNG" alt="Scorp">
   </div>
   <div id="header-search-bar">
-    <input id="search-bar" type="text" placeholder="Search">
+    <input id="search-bar" type="text" placeholder="Search" #searchInput>
   </div>
   <div class="go-button">
-    <button class="btn btn-primary" id="search-button">Go!</button>
+    <button class="btn btn-primary" id="search-button" (click)="onSearch(searchInput.value)">Go!</button>
   </div>
 </div>
 <div id="header-line"></div>
-<div class="main-content">
-  <div *ngFor="let result of results" class="result">
-    <div class="link">
-      <a href="#">{{result}}</a><span><img class="cache-icon" src="../../assets/floppy-disk.png" alt="Cache link"></span>
+<div *ngIf="resultsLoaded; else loading" class="main-content">
+  <div *ngFor="let result of showedResults" class="result">
+    <div class="link-line">
+      <div class="link"><a href="#">{{result}}</a></div>
+      <div class="cache">
+        <img class="cache-icon" src="../../assets/floppy-disk.png" alt="Cache link">
+      </div>
     </div>
     <div class="description">
-      <p>BlablaasflkasfsdafkdsajflsdfgsdgsBlablaasflkasfsdafkdsajflsdfgsdgsBlablaasflkasfsdafkdsajflsdfgsdgs
-        BlablaasflkasfsdafkdsajflsdfgsdgsBlablaasflkasfsdafkdsajflsdfgsdgsBlablaasflkasfsdafkdsajflsdfgsdgs</p>
+      <p>Fragmento de un escrito con unidad temática, que queda diferenciado del resto de fragmentos por un punto y aparte y generalmente también por llevar letra mayúscula inicial y un espacio en blanco en el margen izquierdo de alineación del texto principal de la primera línea.</p>
     </div>
   </div>
+  <ngb-pagination [collectionSize]="results.length" [(page)]="currentPage" [maxSize]="5"
+                  [pageSize]="pageSize" [rotate]="true"
+                  [ellipses]="true" [boundaryLinks]="false"
+                  (pageChange)="onPageChange()"></ngb-pagination>
 </div>
+
+<ng-template #loading>
+  <div id="loading">
+    <div>Loading...</div>
+  </div>
+</ng-template>

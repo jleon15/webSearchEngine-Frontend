@@ -7,9 +7,12 @@ import {HttpClientModule} from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ResultsComponent } from './results/results.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
-  {path: '', component: ResultsComponent}
+  {path: '', component: LandingPageComponent},
+  {path: 'results', component: ResultsComponent},
+  {path: 'landing', component: LandingPageComponent}
 ];
 
 @NgModule({
@@ -24,7 +27,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(
       appRoutes
-    )
+    ),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

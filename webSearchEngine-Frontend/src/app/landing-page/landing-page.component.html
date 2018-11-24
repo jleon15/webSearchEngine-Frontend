@@ -3,9 +3,9 @@
     <img id="landing-logo" src="../../assets/logo.PNG" alt="Scorp">
   </div>
   <div id="search-section">
-    <input id="search-bar" type="text" placeholder="Search">
+    <input id="search-bar" type="text" placeholder="Search" #searchInput>
   </div>
   <div class="go-button">
-    <button class="btn btn-primary" id="search-button">Go!</button>
+    <button class="btn btn-primary" id="search-button" (click)="onSearch(searchInput.value)">Go!</button>
   </div>
 </div>
