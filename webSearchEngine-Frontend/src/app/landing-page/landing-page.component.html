@@ -3,7 +3,7 @@
     <img id="landing-logo" src="../../assets/logo.PNG" alt="Scorp">
   </div>
   <div id="search-section">
-    <input id="search-bar" type="text" placeholder="Buscar" #searchInput>
+    <input id="search-bar" type="text" placeholder="Buscar" (keydown.enter)="onSearch(searchInput.value)" #searchInput>
   </div>
   <div class="go-button">
     <button class="btn btn-primary" id="search-button" (click)="onSearch(searchInput.value)">Ir!</button>
