@@ -20,7 +20,7 @@ export class ResultsComponent implements OnInit {
   showedResults: Result[] = [];
   results: Result[] = [];
 
-  pageSize = 5;
+  pageSize = 10;
   currentPage = 0;
 
   resultsLoaded = false;
