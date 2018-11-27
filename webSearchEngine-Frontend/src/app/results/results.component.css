@@ -38,6 +38,13 @@
   justify-content: center;
   height: 85vh;
 }
+
+#statistics {
+  font-size: 16px;
+  color: black;
+  margin: 0 0 15px 0;
+}
+
 /*-------------------- TAGS --------------------*/
 input {
   border-radius: 10px;

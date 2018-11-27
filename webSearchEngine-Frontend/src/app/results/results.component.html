@@ -11,6 +11,9 @@
 </div>
 <div id="header-line"></div>
 <div *ngIf="resultsLoaded; else loading" class="main-content">
+  <div id="statistics">
+      {{results.length}} resultados ({{queryDuration}} segundos)
+  </div>
   <div *ngFor="let result of showedResults" class="result">
     <div class="link-line">
       <div class="link"><a href="{{result.url}}">{{result.alias}}</a></div>

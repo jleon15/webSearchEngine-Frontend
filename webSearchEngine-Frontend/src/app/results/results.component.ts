@@ -24,6 +24,7 @@ export class ResultsComponent implements OnInit {
   currentPage = 0;
 
   resultsLoaded = false;
+  queryDuration = 0;
 
   constructor(private route: ActivatedRoute, private queryProcessorService: QueryProcessorService, private router: Router) {
   }
@@ -55,6 +56,8 @@ export class ResultsComponent implements OnInit {
   }
 
   processResults(results: any[]) {
+    this.queryDuration = results[results.length - 1].value / 1000;
+    results = results.slice(0, results.length - 1);
     results.forEach(result => {
       const newResult = new Result();
       newResult.alias = result.key;
